@@ -1,0 +1,15 @@
+.btn {
+  background: red;
+  background: red url(../images/footer_mail.png) no-repeat; }
+
+body {
+  background: #cacaca;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #cacaca url(../images/cardsite.jpg) no-repeat; }
+  body * {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxwcm9qZWN0c1xcd2VicGFjay9hc3NldHNcXHN0eWxlc1xcY29tbW9uLnNjc3MiLCJDOlxccHJvamVjdHNcXHdlYnBhY2svYXNzZXRzXFxzdHlsZXNcXG1haW4uc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFlO0VBQ2YsaUVBQWdFLEVBQ25FOztBQ0ZEO0VBQ0ksb0JBQW1CO0VBQ25CLHFCQUFhO0VBQWIscUJBQWE7RUFBYixjQUFhO0VBQ2IsNERBQTJELEVBSzlEO0VBUkQ7SUFNUSwrQkFBc0I7WUFBdEIsdUJBQXNCLEVBQ3pCIiwiZmlsZSI6Im1haW4uc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5idG57XHJcbiAgICBiYWNrZ3JvdW5kOiByZWQ7XHJcbiAgICBiYWNrZ3JvdW5kOiByZWQgdXJsKCcuLi9pbWFnZXMvaWNvbnMvZm9vdGVyX21haWwucG5nJykgbm8tcmVwZWF0O1xyXG59IiwiQGltcG9ydCBcImNvbW1vblwiO1xyXG5ib2R5e1xyXG4gICAgYmFja2dyb3VuZDogI2NhY2FjYTtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBiYWNrZ3JvdW5kOiAjY2FjYWNhIHVybCgnLi4vaW1hZ2VzL2NhcmRzaXRlLmpwZycpIG5vLXJlcGVhdDtcclxuXHJcbiAgICAqe1xyXG4gICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcbiAgICB9XHJcbn0iXX0= */

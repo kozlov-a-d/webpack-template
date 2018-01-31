@@ -1,0 +1,10 @@
+@import "common";
+body{
+    background: #cacaca;
+    display: flex;
+    background: #cacaca url('../images/cardsite.jpg') no-repeat;
+
+    *{
+        box-sizing: border-box;
+    }
+}
