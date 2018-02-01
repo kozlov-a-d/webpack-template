@@ -1,10 +1,10 @@
 // http://dev-city.me/2017/08/31/webpack-config-example
-
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+
 
 const isDevelopment = !process.env.production;
 
@@ -32,14 +32,15 @@ const config = {
             {
                 test: /\.js$/,
                 exclude: [/node_modules/],
-                use: [{
-                    loader: "eslint-loader"
-                    },{
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['env']
+                use: [
+                    // {
+                    // loader: "eslint-loader"
+                    // },
+                    {
+                        loader: 'babel-loader',
+                        options: { presets: ['env'] }
                     }
-                }]
+                ]
             }, {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
@@ -94,15 +95,6 @@ if (isDevelopment) {
 
     //         return '';
     //     });
-    config.plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                drop_console: true,
-                unsafe: true
-            }
-        })
-    );
 } else {
     config.plugins.push(
         new webpack.optimize.UglifyJsPlugin({

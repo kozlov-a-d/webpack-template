@@ -4,6 +4,14 @@ body{
     display: flex;
     background: #ccc9c9 url('../images/cardsite.jpg') no-repeat;
 
+    @media (max-width: 768px) {
+        background: rgb(108, 111, 119);
+    }
+    @media (max-width: 480px) {
+        background: rgb(162, 165, 162);
+    }
+    
+
     *{
         box-sizing: border-box;
     }
