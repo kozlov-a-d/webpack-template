@@ -5,7 +5,6 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-
 const isDevelopment = !process.env.production;
 
 const myPath = {
@@ -45,7 +44,7 @@ const config = {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     use: [
-                        { loader: "css-loader", options: { sourceMap: true }},
+                        { loader: "css-loader", options: { sourceMap: true, minimize: isDevelopment }},
                         { loader: "postcss-loader", options: { sourceMap: 'inline' } },
                         { loader: "sass-loader", options: { sourceMap: true }}
                     ]
@@ -81,7 +80,7 @@ const config = {
             host: 'localhost',
             port: 3000,
             server: { baseDir: [myPath.dir] }
-          })
+        })
     ],
 
 };
