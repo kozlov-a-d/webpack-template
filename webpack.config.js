@@ -4,21 +4,23 @@ const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const isDevelopment = !process.env.production;
 
 const myPath = {
+    dir: 'web',
     dist: 'web/assets/build',
     scripts: {
         target: 'app.js',
-        src: './assets/scripts/index.js'
+        src: './assets/scripts/main.js'
     },
     images: {
         outputPath: '../images/[name].[ext]'  // костыль
     }
 }
 
-module.exports = {
+const config = {
     entry: myPath.scripts.src,
     output: {
         filename: myPath.scripts.target,
@@ -70,6 +72,47 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.ProvidePlugin({
+            _: 'lodash'
+        }),
         new ExtractTextPlugin("app.css"),
-    ]
+        new BrowserSyncPlugin({
+            host: 'localhost',
+            port: 3000,
+            server: { baseDir: [myPath.dir] }
+          })
+    ],
+
 };
+
+if (isDevelopment) {
+    // fs.readdirSync(assetsPath)
+    //     .map((fileName) => {
+    //         if (['.css', '.js'].includes(path.extname(fileName))) {
+    //             return fs.unlinkSync(`${assetsPath}/${fileName}`);
+    //         }
+
+    //         return '';
+    //     });
+    config.plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                drop_console: true,
+                unsafe: true
+            }
+        })
+    );
+} else {
+    config.plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                drop_console: true,
+                unsafe: true
+            }
+        })
+    );
+}
+
+module.exports = config;

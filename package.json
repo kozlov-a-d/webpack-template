@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "build-prod": "webpack -p"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cross-env production=true webpack --config webpack.config.js --progress --colors",
+    "start": "webpack-dev-server --colors --hot --progress",
+    "watch": "webpack --watch"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +21,8 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.6",
+    "browser-sync-webpack-plugin": "^1.2.0",
     "css-loader": "^0.28.9",
     "eslint": "^4.16.0",
     "eslint-loader": "^1.9.0",
@@ -31,6 +34,7 @@
     "postcss-plugin": "^1.0.0",
     "postcss-scss": "^1.0.3",
     "sass-loader": "^6.0.6",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   }
 }
