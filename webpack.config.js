@@ -16,6 +16,9 @@ const myPath = {
     },
     images: {
         outputPath: '../images/[name].[ext]'  // костыль
+    },
+    html: {
+        outputPath: '../[name].[ext]'  // костыль
     }
 }
 
@@ -40,7 +43,23 @@ const config = {
                         options: { presets: ['env'] }
                     }
                 ]
-            }, {
+            },
+            { 
+                test: /\.html.twig$/, 
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: myPath.html.outputPath
+                        }
+                    },
+                    {
+                        loader: "twig-loader" ,
+                        options: { }
+                    }
+                ]
+            },
+            {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     use: [
@@ -82,6 +101,10 @@ const config = {
             server: { baseDir: [myPath.dir] }
         })
     ],
+
+    node: {
+        fs: "empty" // avoids error messages (twig-loader)
+    }
 
 };
 
