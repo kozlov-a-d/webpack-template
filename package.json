@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env production=true webpack --config webpack.config.js --progress --colors",
-    "start": "webpack-dev-server --colors --hot --progress",
-    "watch": "webpack --watch"
+    "build": "webpack",
+    "build -prod": "cross-env production=true webpack",
+    "start": "webpack --watch"
   },
   "author": "",
   "license": "ISC",
@@ -29,6 +29,7 @@
     "eslint-loader": "^1.9.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
+    "html-webpack-plugin": "^2.30.1",
     "image-webpack-loader": "^4.0.0",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.0.10",

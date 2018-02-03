@@ -1,9 +1,19 @@
 // http://dev-city.me/2017/08/31/webpack-config-example
 const path = require('path');
 const fs = require('fs');
+const _ = require('lodash');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const pages = require('./twig.config.js');
+
+let templatePages = _.map(pages, function (page) {
+    return new HtmlWebpackPlugin({
+        filename: page.filename,
+        template: page.template
+    });
+});
 
 const isDevelopment = !process.env.production;
 
@@ -44,47 +54,36 @@ const config = {
                     }
                 ]
             },
-            { 
-                test: /\.html.twig$/, 
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: myPath.html.outputPath
-                        }
-                    },
-                    {
-                        loader: "twig-loader" ,
-                        options: { }
-                    }
-                ]
+            {
+                test: /\.twig$/,
+                loader: 'twig-loader'
             },
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     use: [
-                        { loader: "css-loader", options: { sourceMap: true, minimize: isDevelopment }},
+                        { loader: "css-loader", options: { sourceMap: true, minimize: isDevelopment } },
                         { loader: "postcss-loader", options: { sourceMap: 'inline' } },
-                        { loader: "sass-loader", options: { sourceMap: true }}
+                        { loader: "sass-loader", options: { sourceMap: true } }
                     ]
                 })
             },
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,
                 use: [{
-                        loader: 'file-loader',
-                        options: {
-                            name: myPath.images.outputPath
+                    loader: 'file-loader',
+                    options: {
+                        name: myPath.images.outputPath
+                    }
+                }, {
+                    loader: 'image-webpack-loader',
+                    options: {
+                        mozjpeg: {
+                            progressive: true,
+                            quality: 80
                         }
-                    }, {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            mozjpeg: {
-                                progressive: true,
-                                quality: 80
-                            }
-                        }
-                    },
+                    }
+                },
                 ],
             }
         ],
@@ -100,7 +99,7 @@ const config = {
             port: 3000,
             server: { baseDir: [myPath.dir] }
         })
-    ],
+    ].concat(templatePages),
 
     node: {
         fs: "empty" // avoids error messages (twig-loader)

@@ -77,8 +77,8 @@ var _greeter2 = _interopRequireDefault(_greeter);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 __webpack_require__(2);
-var template = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"layout.html.twig\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-var html = template({ title: 'dialog title' });
+// var template = require("../../pages/page.twig");
+// var html = template({title: 'dialog title'});
 
 console.log("I'm the entry point");
 (0, _greeter2.default)();
