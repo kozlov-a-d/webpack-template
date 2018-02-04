@@ -25,7 +25,7 @@ const myPath = {
         src: './assets/scripts/main.js'
     },
     images: {
-        outputPath: '../images/[name].[ext]'  // костыль
+        outputPath: '../../[path][name].[ext]'  // костыль
     },
     html: {
         outputPath: '../[name].[ext]'  // костыль
@@ -75,7 +75,7 @@ const config = {
                     options: {
                         name: myPath.images.outputPath
                     }
-                }, {
+                },{
                     loader: 'image-webpack-loader',
                     options: {
                         mozjpeg: {
