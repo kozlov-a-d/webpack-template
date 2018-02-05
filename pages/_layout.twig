@@ -29,23 +29,31 @@
     }
     </script>
 
-<link href="assets/build/app.css" rel="stylesheet"></head>
+</head>
 
 <body>
 
-    
-<header>header</header>
+    {% include './_header.twig' %}
 
+    {% block main %}
+        Content of the page...
 
-    
-<main>
-    <h1>Index 2</h1>
-</main>
+        <!-- Twig Documentation https://twig.symfony.com/doc/2.x/  -->
+        {% for user in users %}
+            <li>{{ user.username|e }}</li>
+        {% endfor %}
 
+        {% for i in 0..10 %}
+            * {{ i }}
+        {% endfor %}
 
-    
-<footer>footer</footer>
+        {% for letter in 'a'..'z' %}
+            * {{ letter }}
+        {% endfor %}
 
+    {% endblock %}
 
-<script type="text/javascript" src="assets/build/app.js"></script></body>
+    {% include './_footer.twig' %}
+
+</body>
 </html>

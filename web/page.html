@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="assets/build/app.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>HTML Template</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Organization",
+      "name" : "OrganizationName",
+      "url" : "http://domain.ru",
+      "sameAs" : [
+        "http://vk.com/id",
+        "https://www.facebook.com/id",
+        "https://twitter.com/id",
+        "https://plus.google.com/+id"
+      ]
+    }
+    </script>
+
 <link href="assets/build/app.css" rel="stylesheet"></head>
+
 <body>
 
     
-        <div class="test-block">
+<header>header</header>
+
+
+    
+    <div class="test-block">
         <h1>test</h1>
         <button class="btn">
             test
@@ -17,13 +47,13 @@
             <img src="assets/images/icons/footer_mail.png" alt="svg">
             <img src="assets/images/loader.svg" alt="svg">
             
-            <img src=<%=require("../images/loader.svg")%> /> 
         </button>
     </div>
 
 
+    
+<footer>footer</footer>
 
-    <script src="assets/build/app.js"></script>
 
 <script type="text/javascript" src="assets/build/app.js"></script></body>
 </html>

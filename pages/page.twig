@@ -1,7 +1,7 @@
-{% extends "./layout.twig" %}
+{% extends "./_layout.twig" %}
 
-{% block content %}
-        <div class="test-block">
+{% block main %}
+    <div class="test-block">
         <h1>test</h1>
         <button class="btn">
             test
@@ -10,7 +10,6 @@
             <img src="assets/images/icons/footer_mail.png" alt="svg">
             <img src="assets/images/loader.svg" alt="svg">
             
-            <img src=<%=require("../images/loader.svg")%> /> 
         </button>
     </div>
 {% endblock %}
