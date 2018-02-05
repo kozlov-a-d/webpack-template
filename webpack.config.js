@@ -24,13 +24,15 @@ const myPath = {
         target: 'app.js',
         src: './assets/scripts/main.js'
     },
-    images: {
-        outputPath: '../../[path][name].[ext]'  // костыль
-    },
-    html: {
-        outputPath: '../[name].[ext]'  // костыль
+    styles: { target: 'app.css' },
+    images: {  outputPath: '../../[path][name].[ext]' },
+    html: { 
+        src: './web/',
+        outputPath: '../[name].[ext]' 
     }
 }
+
+
 
 const config = {
     entry: myPath.scripts.src,
@@ -45,18 +47,16 @@ const config = {
                 test: /\.js$/,
                 exclude: [/node_modules/],
                 use: [
-                    // {
-                    // loader: "eslint-loader"
-                    // },
-                    {
-                        loader: 'babel-loader',
-                        options: { presets: ['env'] }
-                    }
+                    // { loader: "eslint-loader" },
+                    { loader: 'babel-loader', options: { presets: ['env'] } }
                 ]
             },
             {
                 test: /\.twig$/,
-                loader: 'twig-loader'
+                use: [
+                    // {loader: 'html-loader', options: {ignoreCustomFragments: [/\{\{.*?}}/], root: path.resolve(__dirname, 'assets'),  attrs: ['img:src', 'link:href']}},
+                    {loader: 'twig-loader'}
+                ]
             },
             {
                 test: /\.scss$/,
@@ -70,35 +70,24 @@ const config = {
             },
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: myPath.images.outputPath
-                    }
-                },{
-                    loader: 'image-webpack-loader',
-                    options: {
-                        mozjpeg: {
-                            progressive: true,
-                            quality: 80
-                        }
-                    }
-                },
+                use: [
+                    { loader: 'file-loader', options: { name: myPath.images.outputPath } },
+                    { loader: 'image-webpack-loader', options: {  mozjpeg: { progressive: true, quality: 80 } } },
                 ],
             }
         ],
     },
 
+    
+
     plugins: [
-        new webpack.ProvidePlugin({
-            _: 'lodash'
-        }),
-        new ExtractTextPlugin("app.css"),
-        new BrowserSyncPlugin({
-            host: 'localhost',
-            port: 3000,
-            server: { baseDir: [myPath.dir] }
-        })
+        new webpack.ProvidePlugin({ _: 'lodash' }),
+        new ExtractTextPlugin( myPath.styles.target ),
+        // new BrowserSyncPlugin({
+        //     host: 'localhost',
+        //     port: 3000,
+        //     server: { baseDir: [myPath.dir] }
+        // })
     ].concat(templatePages),
 
     node: {
